@@ -25,7 +25,7 @@ type DefaultHttpAPI struct {
 }
 
 func (d *DefaultHttpAPI) Name() string {
-	return ""
+	return d.name
 }
 
 func (d *DefaultHttpAPI) SetName(n string) {
@@ -43,12 +43,13 @@ func (d *DefaultHttpAPI) SetLogger(l *zerolog.Logger) {
 func (d *DefaultHttpAPI) Init() error {
 	if d.logger == nil {
 		d.logger = logger.NewDefaultConsoleLogger()
-		d.logger.Info().Str("name", d.Name()).Msg("set default logger")
 	}
+	l := d.logger.With().Str("api", d.Name()).Logger()
+	d.logger = &l
 	d.router = chi.NewRouter()
 	return nil
 }
 
 func (d *DefaultHttpAPI) Router() *chi.Mux {
-	panic("implement me")
+	return d.router
 }
