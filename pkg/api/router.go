@@ -1,11 +1,14 @@
 package api
 
 import (
+	"net/http"
+
 	"github.com/go-chi/chi/v5"
 )
 
 type Router interface {
 	Add(p string, a HttpAPI)
+	Use(m ...func(handler http.Handler) http.Handler)
 	Router() (*chi.Mux, error)
 }
 
@@ -18,6 +21,10 @@ type DefaultRouter struct {
 
 func (d *DefaultRouter) Add(p string, a HttpAPI) {
 	d.store[p] = a
+}
+
+func (d *DefaultRouter) Use(m ...func(handler http.Handler) http.Handler) {
+	d.router.Use(m...)
 }
 
 func (d *DefaultRouter) Router() (*chi.Mux, error) {
