@@ -8,7 +8,6 @@ import (
 	"go-http-template/pkg/api"
 	"go-http-template/pkg/logger"
 
-	"github.com/go-chi/chi/v5/middleware"
 	"github.com/rs/zerolog"
 )
 
@@ -30,7 +29,6 @@ func Run(l *zerolog.Logger) error {
 	// global middleware tanımlamaları
 	router.Use(api.MiddlewareRequestID) // %10 performance decrease
 	router.Use(api.MiddlewareLogger(l)) // %75 performance decrease
-	router.Use(middleware.Recoverer)
 
 	// uygulamaları ekle
 	router.Add("/", app)
