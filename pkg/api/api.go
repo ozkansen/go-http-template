@@ -17,7 +17,7 @@ type HttpAPI interface {
 	SetLogger(l *zerolog.Logger)
 
 	// Init tanımlamalar bittikten sonra çalıştırın
-	Init() error
+	Configure() error
 
 	// Router api yazıldıktan sonra endpoint tanımlamaları burada yapılır
 	Router() *chi.Mux
@@ -47,7 +47,7 @@ func (d *DefaultHttpAPI) SetLogger(l *zerolog.Logger) {
 	d.logger = l
 }
 
-func (d *DefaultHttpAPI) Init() error {
+func (d *DefaultHttpAPI) Configure() error {
 	if d.logger == nil {
 		d.logger = logger.NewDefaultConsoleLogger()
 	}
