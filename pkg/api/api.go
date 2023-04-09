@@ -8,20 +8,27 @@ import (
 )
 
 type HttpAPI interface {
+	// Name çalışan api yi isimlendirin
 	Name() string
 	SetName(n string)
+
+	// Logger api ye tanımlanmış logger
 	Logger() *zerolog.Logger
 	SetLogger(l *zerolog.Logger)
+
+	// Init tanımlamalar bittikten sonra çalıştırın
 	Init() error
+
+	// Router api yazıldıktan sonra endpoint tanımlamaları burada yapılır
 	Router() *chi.Mux
 }
 
 var _ HttpAPI = (*DefaultHttpAPI)(nil)
 
 type DefaultHttpAPI struct {
-	name   string
 	router *chi.Mux
 	logger *zerolog.Logger
+	name   string
 }
 
 func (d *DefaultHttpAPI) Name() string {
