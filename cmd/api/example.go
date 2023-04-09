@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"go-http-template/pkg/api"
+	"github.com/ozkansen/go-http-template/pkg/api"
 
 	"github.com/go-chi/chi/v5"
 )

@@ -1,7 +1,7 @@
 package api
 
 import (
-	"go-http-template/pkg/logger"
+	"github.com/ozkansen/go-http-template/pkg/logger"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/rs/zerolog"

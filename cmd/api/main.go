@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"go-http-template/pkg/api"
-	"go-http-template/pkg/logger"
+	"github.com/ozkansen/go-http-template/pkg/api"
+	"github.com/ozkansen/go-http-template/pkg/logger"
 
 	"github.com/rs/zerolog"
 )

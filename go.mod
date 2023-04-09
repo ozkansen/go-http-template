@@ -1,4 +1,4 @@
-module go-http-template
+module github.com/ozkansen/go-http-template
 
 go 1.20
 
